@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book TV Service - Century Electronics</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+    padding:20px;
+}
+
+.container{
+    max-width:600px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+h2{
+    text-align:center;
+    color:#1565c0;
+    margin-bottom:20px;
+}
+
+input, select, textarea{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    background:#25D366;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    opacity:0.9;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Book TV Service</h2>
+
+<form id="serviceForm">
+
+<input type="text" id="name" placeholder="Your Name" required>
+
+<input type="tel" id="phone" placeholder="Mobile Number" required>
+
+<input type="text" id="brand" placeholder="TV Brand (LG, Sony, Samsung etc.)">
+
+<input type="text" id="model" placeholder="TV Model Number">
+
+<select id="problem">
+    <option value="">Select Problem</option>
+    <option>TV Not Turning On</option>
+    <option>No Display</option>
+    <option>Sound Problem</option>
+    <option>Screen Damage</option>
+    <option>Remote Not Working</option>
+    <option>Other</option>
+</select>
+
+<textarea id="details" rows="5" placeholder="Describe Your Problem"></textarea>
+
+<input type="text" id="address" placeholder="Address">
+
+<button type="submit">Send via WhatsApp</button>
+
+</form>
+
+</div>
+
+<script>
+document.getElementById("serviceForm").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let brand = document.getElementById("brand").value;
+    let problem = document.getElementById("problem").value;
+    let details = document.getElementById("details").value;
+    let address = document.getElementById("address").value;
+
+    let whatsappNumber = "917395998017";
+
+    let message =
+`*TV Service Request*
+
+Name: ${name}
+Phone: ${phone}
+TV Brand: ${brand}
+Problem: ${problem}
+Details: ${details}
+Address: ${address}`;
+
+    window.open(
+        `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,
+        "_blank"
+    );
+
+    document.getElementById("successMessage").style.display = "block";
+
+    document.getElementById("serviceForm").reset();
+});
+
+
+alert(
+"✅ Thank you for contacting Century Electronics.\n\nOur technician will contact you shortly."
+);
+</script>
+
+</body>
+</html>
